@@ -1,0 +1,7 @@
+baseURL = 'https://robinroy.xyz/'
+locale = 'en-us'
+title = 'Robin Roy'
+theme = 'hugo-bearblog'
+
+[params]
+hideMadeWithLine = true
