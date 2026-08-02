@@ -1,0 +1,15 @@
+{{- $id := printf "popover-%d" .Ordinal -}}
+{{- $image := .Get "image" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $text := .Get "text" -}}
+<span class="inline-popover">
+  <button type="button" class="inline-popover__trigger" aria-label="Show popup" aria-describedby="{{ $id }}">*</button>
+  <span id="{{ $id }}" class="inline-popover__content{{ if $image }} inline-popover__content--image{{ end }}" role="tooltip">
+    {{- if $image -}}
+      <img class="inline-popover__image" src="{{ $image }}" alt="{{ $alt }}">
+      {{- with $text }}<span class="inline-popover__caption">{{ . | markdownify }}</span>{{ end -}}
+    {{- else -}}
+      {{ $text | markdownify }}
+    {{- end -}}
+  </span>
+</span>

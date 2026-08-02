@@ -40,4 +40,86 @@
   #theme-toggle:hover {
     color: var(--heading-color);
   }
+
+  figcaption {
+    font-size: 0.85em;
+    font-style: italic;
+  }
+
+  blockquote {
+    margin: 1.25rem 0;
+    padding: 0.8rem 1rem;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    background: rgba(128, 128, 128, 0.08);
+    color: var(--text-color);
+  }
+
+  blockquote p {
+    margin: 0;
+  }
+
+  .inline-popover {
+    position: relative;
+    display: inline-block;
+  }
+
+  .inline-popover__trigger {
+    border: 0;
+    padding: 0;
+    background: none;
+    color: var(--link-color);
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .inline-popover__content {
+    position: absolute;
+    z-index: 10;
+    bottom: calc(100% + 0.4rem);
+    left: 50%;
+    width: max-content;
+    max-width: min(16rem, 80vw);
+    padding: 0.45rem 0.65rem;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background: var(--background-color);
+    color: var(--text-color);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+    font-size: 0.85em;
+    line-height: 1.35;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 0.2rem);
+    transition:
+      opacity 120ms ease,
+      transform 120ms ease,
+      visibility 120ms;
+  }
+
+  .inline-popover__content--image {
+    max-width: min(20rem, 80vw);
+    padding: 0.25rem;
+  }
+
+  .inline-popover__image {
+    display: block;
+    width: 20rem;
+    max-width: 100%;
+    height: auto;
+    border-radius: 3px;
+  }
+
+  .inline-popover__caption {
+    display: block;
+    padding: 0.45rem 0.4rem 0.2rem;
+  }
+
+  .inline-popover:focus-within .inline-popover__content,
+  .inline-popover:hover .inline-popover__content {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
 </style>
