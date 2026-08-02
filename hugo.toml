@@ -2,6 +2,8 @@ baseURL = 'https://robinroy.xyz/'
 locale = 'en-us'
 title = 'Robin Roy'
 theme = 'hugo-bearblog'
+enableRobotsTXT = true
 
 [params]
 hideMadeWithLine = true
+description = "Robin Roy's personal site and blog."
