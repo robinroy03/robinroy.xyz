@@ -1,0 +1,43 @@
+<script>
+  // Apply saved theme before first paint to avoid a flash of the wrong theme
+  (function () {
+    var theme = localStorage.getItem("theme");
+    if (theme === "light" || theme === "dark") {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+  })();
+</script>
+<style>
+  /* Manual theme override — [data-theme] beats the theme's
+     prefers-color-scheme media query; without it, system preference applies */
+  :root[data-theme="light"] {
+    --background-color: #fff;
+    --heading-color: #222;
+    --text-color: #444;
+    --link-color: #3273dc;
+    --visited-color: #8b6fcb;
+    --blockquote-color: #222;
+  }
+
+  :root[data-theme="dark"] {
+    --background-color: #01242e;
+    --heading-color: #eee;
+    --text-color: #ddd;
+    --link-color: #8cc2dd;
+    --visited-color: #8b6fcb;
+    --blockquote-color: #ccc;
+  }
+
+  #theme-toggle {
+    float: right;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: var(--text-color);
+  }
+
+  #theme-toggle:hover {
+    color: var(--heading-color);
+  }
+</style>

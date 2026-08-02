@@ -1,0 +1,28 @@
+<script>
+  (function () {
+    var button = document.getElementById("theme-toggle");
+    if (!button) return;
+
+    function currentTheme() {
+      return (
+        document.documentElement.getAttribute("data-theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light")
+      );
+    }
+
+    function updateLabel() {
+      button.textContent = currentTheme() === "dark" ? "light" : "dark";
+    }
+
+    button.addEventListener("click", function () {
+      var next = currentTheme() === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      updateLabel();
+    });
+
+    updateLabel();
+  })();
+</script>
