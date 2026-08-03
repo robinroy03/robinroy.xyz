@@ -1,0 +1,15 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $caption := .Get "caption" | default "" -}}
+{{- $note := .Get "note" -}}
+<figure>
+  <img src="{{ $src }}" alt="{{ $alt }}">
+  {{- if or $caption $note -}}
+  <figcaption>
+    {{- with $caption }}{{ . | markdownify }}{{ end -}}
+    {{- with $note -}}
+      {{- partial "popover.html" (dict "id" (printf "fig-%d" $.Ordinal) "text" .) -}}
+    {{- end -}}
+  </figcaption>
+  {{- end -}}
+</figure>
