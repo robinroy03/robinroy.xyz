@@ -123,4 +123,72 @@
     visibility: visible;
     transform: translate(-50%, 0);
   }
+
+  .email-menu {
+    position: relative;
+    display: inline-block;
+  }
+
+  .email-menu__trigger {
+    border: 0;
+    padding: 0;
+    background: none;
+    color: var(--link-color);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .email-menu__trigger:hover {
+    text-decoration: underline;
+  }
+
+  .email-menu__list {
+    position: absolute;
+    z-index: 10;
+    bottom: calc(100% + 0.4rem);
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    max-width: min(16rem, 80vw);
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background: var(--background-color);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+    font-size: 0.85em;
+    line-height: 1.35;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 0.2rem);
+    transition:
+      opacity 120ms ease,
+      transform 120ms ease,
+      visibility 120ms;
+  }
+
+  .email-menu__list a,
+  .email-menu__list button {
+    border: 0;
+    padding: 0.45rem 0.65rem;
+    background: none;
+    color: var(--text-color);
+    font: inherit;
+    font-size: inherit;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .email-menu__list a:hover,
+  .email-menu__list button:hover {
+    background: rgba(128, 128, 128, 0.12);
+    color: var(--heading-color);
+  }
+
+  .email-menu.open .email-menu__list {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
 </style>
