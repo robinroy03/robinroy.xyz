@@ -1,19 +1,38 @@
-{{- /* Generates a 1200x630 og:image with the page title, returns the image resource. */ -}}
+{{- /* Generates a 1200x630 og:image with the page title and description, returns the image resource. */ -}}
 {{- $font := resources.Get "og/InstrumentSerif-Regular.ttf" -}}
 {{- $text := cond .IsHome .Site.Title (.Title | default .Site.Title) -}}
+{{- $desc := .Description | default .Site.Params.description -}}
 {{- $title := resources.Get "og/canvas.png" | images.Filter (images.Text $text (dict
   "font" $font
   "color" "#ffffff"
   "size" 72
   "linespacing" 14
 )) -}}
-{{- $img := resources.Get "og/background.png" | images.Filter
-  (images.Overlay $title 80 140)
+{{- $subtitle := resources.Get "og/canvas.png" | images.Filter (images.Text $desc (dict
+  "font" $font
+  "color" "#9a9a9a"
+  "size" 30
+  "linespacing" 10
+)) -}}
+{{- $filters := slice
+  (images.Overlay $title 80 130)
+  (images.Overlay $subtitle 80 420)
   (images.Text "robinroy.xyz" (dict
     "font" $font
     "color" "#9a9a9a"
     "size" 30
     "x" 80
-    "y" 500
+    "y" 540
   )) -}}
+{{- if and .IsPage (not .Date.IsZero) -}}
+  {{- $filters = $filters | append (images.Text (.Date.Format "Jan 2, 2006") (dict
+    "font" $font
+    "color" "#9a9a9a"
+    "size" 30
+    "x" 1120
+    "y" 540
+    "alignx" "right"
+  )) -}}
+{{- end -}}
+{{- $img := resources.Get "og/background.png" | images.Filter $filters -}}
 {{- return $img -}}

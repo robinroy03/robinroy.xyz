@@ -2,6 +2,7 @@
 title = "Home"
 menu = "main"
 weight = 1
+description = "hi i'm robin welcome to my little place on the internet"
 +++
 
 # Hi
