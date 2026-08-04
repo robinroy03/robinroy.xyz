@@ -2,10 +2,31 @@
 {{- $font := resources.Get "og/InstrumentSerif-Regular.ttf" -}}
 {{- $text := cond .IsHome .Site.Title (.Title | default .Site.Title) -}}
 {{- $desc := .Description | default .Site.Params.description -}}
+{{- $size := 72 -}}
+{{- $lineH := 86 -}}
+{{- /* Estimate wrapped line count to position the description right below the
+       title. images.Text word-wraps at the canvas width (1040) but Hugo cannot
+       measure text, so approximate glyph width as 0.36 * font size. */ -}}
+{{- $charW := mul $size 0.36 -}}
+{{- $maxW := 1040 -}}
+{{- $lines := 1 -}}
+{{- $cur := 0.0 -}}
+{{- range $word := split $text " " -}}
+  {{- $ww := mul (strings.RuneCount $word) $charW -}}
+  {{- if eq $cur 0.0 -}}
+    {{- $cur = $ww -}}
+  {{- else if gt (add $cur (add $charW $ww)) $maxW -}}
+    {{- $lines = add $lines 1 -}}
+    {{- $cur = $ww -}}
+  {{- else -}}
+    {{- $cur = add $cur (add $charW $ww) -}}
+  {{- end -}}
+{{- end -}}
+{{- $descY := int (add 130 (add (mul $lines $lineH) 36)) -}}
 {{- $title := resources.Get "og/canvas.png" | images.Filter (images.Text $text (dict
   "font" $font
   "color" "#ffffff"
-  "size" 72
+  "size" $size
   "linespacing" 14
 )) -}}
 {{- $subtitle := resources.Get "og/canvas.png" | images.Filter (images.Text $desc (dict
@@ -16,7 +37,7 @@
 )) -}}
 {{- $filters := slice
   (images.Overlay $title 80 130)
-  (images.Overlay $subtitle 80 420)
+  (images.Overlay $subtitle 80 $descY)
   (images.Text "robinroy.xyz" (dict
     "font" $font
     "color" "#9a9a9a"
