@@ -6,4 +6,5 @@ enableRobotsTXT = true
 
 [params]
 hideMadeWithLine = true
+favicon = 'favicon.svg'
 description = "Robin Roy's personal site and blog."

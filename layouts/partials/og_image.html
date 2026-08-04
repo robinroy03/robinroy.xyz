@@ -1,0 +1,19 @@
+{{- /* Generates a 1200x630 og:image with the page title, returns the image resource. */ -}}
+{{- $font := resources.Get "og/InstrumentSerif-Regular.ttf" -}}
+{{- $text := cond .IsHome .Site.Title (.Title | default .Site.Title) -}}
+{{- $title := resources.Get "og/canvas.png" | images.Filter (images.Text $text (dict
+  "font" $font
+  "color" "#ffffff"
+  "size" 72
+  "linespacing" 14
+)) -}}
+{{- $img := resources.Get "og/background.png" | images.Filter
+  (images.Overlay $title 80 140)
+  (images.Text "robinroy.xyz" (dict
+    "font" $font
+    "color" "#9a9a9a"
+    "size" 30
+    "x" 80
+    "y" 500
+  )) -}}
+{{- return $img -}}
