@@ -42,6 +42,48 @@
     color: var(--heading-color);
   }
 
+  ul.home-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.home-posts li {
+    margin-bottom: 1rem;
+  }
+
+  ul.home-posts li a:visited {
+    color: var(--visited-color);
+  }
+
+  ul.home-posts li small {
+    font-size: 0.85em;
+    font-style: italic;
+  }
+
+  .meta {
+    font-size: 0.85em;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0 0.4em;
+    border: 1px solid var(--text-color);
+    border-radius: 3px;
+    font-size: 0.85em;
+    line-height: 1.5;
+  }
+
+  .tag[hidden] {
+    display: none;
+  }
+
+  .tag--high {
+    border-color: var(--heading-color);
+    background: var(--heading-color);
+    color: var(--background-color);
+    font-weight: bold;
+  }
+
   figcaption {
     font-size: 0.85em;
     font-style: italic;

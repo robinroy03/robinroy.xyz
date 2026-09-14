@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ .Content }}
+
+{{ $posts := where .Site.RegularPages "Section" "blog" }}
+{{ with $posts }}
+<hr />
+<p>Some things I've written.</p>
+<ul class="home-posts">
+  {{ range .ByDate.Reverse }}
+  <li>
+    <time datetime='{{ .Date.Format "2006-01-02" }}'>{{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}</time> · <a href="{{ .Permalink }}" target="_blank" rel="noopener noreferrer">{{ .Title }}</a>
+    {{ with .Description }}<br /><small>{{ . }}</small>{{ end }}
+  </li>
+  {{ end }}
+</ul>
+{{ end }}
+{{ end }}

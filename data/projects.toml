@@ -1,0 +1,13 @@
+# Rendered on the /projects/ page in this order.
+
+[[projects]]
+name = "Kimu"
+description = "Open-source AI video editor. Your creative copilot for video editing."
+url = "https://github.com/trykimu/videoeditor"
+github = "trykimu/videoeditor"
+
+[[projects]]
+name = "Pronouncey"
+description = "Chrome extension that shows how native speakers pronounce a word, using clips from real conversations."
+url = "https://chromewebstore.google.com/detail/pronouncey-real-world-eng/kgjbnggfkdndfpcmngnfpikgjnhdaedn"
+badge = "Featured Chrome extension"

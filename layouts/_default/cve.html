@@ -1,0 +1,12 @@
+{{ define "main" }}
+{{ .Content }}
+<ul class="home-posts">
+  {{ range .Site.Data.cves.cves }}
+  <li>
+    <span class="meta"><span class="tag tag--{{ .severity }}">{{ .severity | title }}</span> {{ .id }} · CVSS {{ .cvss }}{{ with .writeup }} · <a href="{{ . | relURL }}" target="_blank" rel="noopener noreferrer">Writeup</a>{{ end }}</span><br />
+    <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>
+    {{ with .description }}<br /><small>{{ . }}</small>{{ end }}
+  </li>
+  {{ end }}
+</ul>
+{{ end }}

@@ -1,0 +1,26 @@
+{{ define "main" }}
+{{ .Content }}
+<ul class="home-posts">
+  {{ range .Site.Data.projects.projects }}
+  <li>
+    <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
+    {{ with .github }}<span class="tag tag--stars" data-repo="{{ . }}" hidden>★ <span></span> GitHub stars</span>{{ end }}
+    {{ with .badge }}<span class="tag">{{ . }}</span>{{ end }}
+    {{ with .description }}<br /><small>{{ . }}</small>{{ end }}
+  </li>
+  {{ end }}
+</ul>
+<script>
+  document.querySelectorAll(".tag--stars").forEach(function (el) {
+    fetch("https://api.github.com/repos/" + el.dataset.repo)
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var n = d.stargazers_count;
+        if (typeof n !== "number") return;
+        el.querySelector("span").textContent = n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, "") + "k" : n;
+        el.hidden = false;
+      })
+      .catch(function () {});
+  });
+</script>
+{{ end }}

@@ -1,0 +1,44 @@
+# Newest first. Rendered on the home page under "CVEs".
+
+[[cves]]
+id = "GHSA-55m4-gj6h-q6rc"
+title = "Disabled users continue to receive Document Follow email notifications"
+severity = "medium"
+cvss = "5.3"
+url = "https://github.com/frappe/frappe/security/advisories/GHSA-55m4-gj6h-q6rc"
+writeup = "/blog/frappe-document-follow-vulnerability/"
+
+[[cves]]
+id = "CVE-2026-66003"
+title = "Access control bypass via REST API"
+description = "Access control bypass via REST API on Linked DocTypes."
+severity = "high"
+cvss = "7.1"
+url = "https://github.com/frappe/frappe/security/advisories/GHSA-p25m-7rvg-6fvr"
+
+[[cves]]
+id = "CVE-2026-66059"
+title = "Field-level permission bypass via Document Follow"
+description = "Field-level permission bypass exposes restricted DocType fields."
+severity = "medium"
+cvss = "5.3"
+url = "https://github.com/frappe/frappe/security/advisories/GHSA-7vpf-q96h-59x4"
+writeup = "/blog/frappe-document-follow-vulnerability/"
+
+[[cves]]
+id = "CVE-2026-66058"
+title = "Unrestricted access to a Document Follow API"
+description = "Unrestricted access to a Document Follow API (update_follow) for an authenticated user is possible."
+severity = "medium"
+cvss = "5.3"
+url = "https://github.com/frappe/frappe/security/advisories/GHSA-fgx7-fvpx-mw3g"
+writeup = "/blog/frappe-document-follow-vulnerability/"
+
+[[cves]]
+id = "CVE-2026-66000"
+title = "Stale authorization in Document Follow allows revoked users to continue receiving document data"
+description = "If a user follows a doc and has their access revoked or reduced, they still continue to receive emails for that document."
+severity = "medium"
+cvss = "2.3"
+url = "https://github.com/frappe/frappe/security/advisories/GHSA-wcm9-vvcc-r8pr"
+writeup = "/blog/frappe-document-follow-vulnerability/"
