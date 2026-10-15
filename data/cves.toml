@@ -1,6 +1,13 @@
 # Newest first. Rendered on the home page under "CVEs".
 
 [[cves]]
+id = "GHSA-9pp9-wgp9-3p3j"
+title = "Remote code execution via path traversal"
+severity = "critical"
+cvss = "9.9"
+url = "https://github.com/frappe/frappe/security/advisories/GHSA-9pp9-wgp9-3p3j"
+
+[[cves]]
 id = "GHSA-55m4-gj6h-q6rc"
 title = "Disabled users continue to receive Document Follow email notifications"
 severity = "medium"
