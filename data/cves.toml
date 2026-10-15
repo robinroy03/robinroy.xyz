@@ -1,4 +1,4 @@
-# Newest first. Rendered on the home page under "CVEs".
+# Highest CVSS first (ties newest first). Rendered on the home page under "CVEs".
 
 [[cves]]
 id = "GHSA-9pp9-wgp9-3p3j"
@@ -8,20 +8,20 @@ cvss = "9.9"
 url = "https://github.com/frappe/frappe/security/advisories/GHSA-9pp9-wgp9-3p3j"
 
 [[cves]]
-id = "GHSA-55m4-gj6h-q6rc"
-title = "Disabled users continue to receive Document Follow email notifications"
-severity = "medium"
-cvss = "5.3"
-url = "https://github.com/frappe/frappe/security/advisories/GHSA-55m4-gj6h-q6rc"
-writeup = "/blog/frappe-document-follow-vulnerability/"
-
-[[cves]]
 id = "CVE-2026-66003"
 title = "Access control bypass via REST API"
 description = "Access control bypass via REST API on Linked DocTypes."
 severity = "high"
 cvss = "7.1"
 url = "https://github.com/frappe/frappe/security/advisories/GHSA-p25m-7rvg-6fvr"
+
+[[cves]]
+id = "GHSA-55m4-gj6h-q6rc"
+title = "Disabled users continue to receive Document Follow email notifications"
+severity = "medium"
+cvss = "5.3"
+url = "https://github.com/frappe/frappe/security/advisories/GHSA-55m4-gj6h-q6rc"
+writeup = "/blog/frappe-document-follow-vulnerability/"
 
 [[cves]]
 id = "CVE-2026-66059"
