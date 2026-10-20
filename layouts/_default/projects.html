@@ -5,7 +5,9 @@
   <li>
     <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
     {{ with .github }}<span class="tag tag--stars" data-repo="{{ . }}" hidden>★ <span></span> GitHub stars</span>{{ end }}
-    {{ range .badges }}<span class="tag">{{ . }}</span>{{ end }}
+    {{ range .badges }}
+    <span class="tag">{{ . }}</span>
+    {{ end }}
     {{ with .description }}<br /><small>{{ . }}</small>{{ end }}
   </li>
   {{ end }}
