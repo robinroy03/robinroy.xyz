@@ -10,4 +10,4 @@ github = "trykimu/videoeditor"
 name = "Pronouncey"
 description = "Chrome extension that shows how native speakers pronounce a word, using clips from real conversations."
 url = "https://chromewebstore.google.com/detail/pronouncey-real-world-eng/kgjbnggfkdndfpcmngnfpikgjnhdaedn"
-badges = ["2000+ users", "Featured Chrome extension"]
+badges = ["700+ users", "Featured Chrome extension"]
