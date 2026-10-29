@@ -11,3 +11,9 @@ name = "Pronouncey"
 description = "Chrome extension that shows how native speakers pronounce a word, using clips from real conversations."
 url = "https://chromewebstore.google.com/detail/pronouncey-real-world-eng/kgjbnggfkdndfpcmngnfpikgjnhdaedn"
 badges = ["700+ users", "Featured Chrome extension"]
+
+[[projects]]
+name = "appblock"
+description = "Android app blocker with \"allow X minutes per rolling Y minutes\" limits."
+url = "https://github.com/rubberpencils/appblock"
+github = "rubberpencils/appblock"
