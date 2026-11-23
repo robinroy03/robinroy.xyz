@@ -1,0 +1,85 @@
+{{ define "main" }}
+{{ .Content }}
+<div class="wall">
+  {{ range .Params.pics }}
+  {{ $wide := .wide }}
+  {{ $alt := .alt }}
+  {{ with $.Resources.Get .src }}
+  <a href="{{ .RelPermalink }}" target="_blank"{{ if $wide }} class="wide"{{ end }}><img src="{{ .RelPermalink }}" alt="{{ $alt }}" width="{{ .Width }}" height="{{ .Height }}" loading="lazy" /></a>
+  {{ end }}
+  {{ end }}
+</div>
+<script>
+  // Shuffle the wall on every load, keeping only shuffles whose two columns
+  // end up about the same height. Wide pics span both columns.
+  (function () {
+    var GAP = 12;
+    var wall = document.querySelector(".wall");
+    var colW = (wall.clientWidth - GAP) / 2;
+    var pics = Array.from(wall.children).map(function (a) {
+      var img = a.querySelector("img");
+      return {
+        el: a,
+        wide: a.classList.contains("wide"),
+        h: (colW * img.getAttribute("height")) / img.getAttribute("width") + GAP,
+      };
+    });
+
+    // Each pic goes into the shorter column; a wide pic starts a new pair of columns.
+    function arrange(order) {
+      var rows = [];
+      var cols = null;
+      var uneven = 0;
+      function close() {
+        if (cols) uneven = Math.max(uneven, Math.abs(cols.h[0] - cols.h[1]));
+        cols = null;
+      }
+      order.forEach(function (p) {
+        if (p.wide) {
+          close();
+          rows.push(p);
+          return;
+        }
+        if (!cols) {
+          cols = { els: [[], []], h: [0, 0] };
+          rows.push(cols);
+        }
+        var i = cols.h[0] <= cols.h[1] ? 0 : 1;
+        cols.els[i].push(p.el);
+        cols.h[i] += p.h;
+      });
+      close();
+      return { rows: rows, uneven: uneven };
+    }
+
+    var best = null;
+    for (var n = 0; n < 2000 && !(best && best.uneven <= 40); n++) {
+      for (var i = pics.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = pics[i];
+        pics[i] = pics[j];
+        pics[j] = t;
+      }
+      var a = arrange(pics);
+      if (!best || a.uneven < best.uneven) best = a;
+    }
+
+    best.rows.forEach(function (row) {
+      if (row.wide) {
+        wall.appendChild(row.el);
+        return;
+      }
+      var div = document.createElement("div");
+      div.className = "cols";
+      row.els.forEach(function (els) {
+        var col = document.createElement("div");
+        els.forEach(function (el) {
+          col.appendChild(el);
+        });
+        div.appendChild(col);
+      });
+      wall.appendChild(div);
+    });
+  })();
+</script>
+{{ end }}

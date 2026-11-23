@@ -76,6 +76,38 @@
     font-size: 0.85em;
   }
 
+  .wall {
+    margin-top: 1rem;
+  }
+
+  .wall .cols {
+    display: flex;
+    gap: 12px;
+  }
+
+  .wall .cols > div {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .wall a {
+    display: block;
+    padding-bottom: 12px;
+  }
+
+  .wall img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 500px) {
+    .wall .cols {
+      display: block;
+    }
+  }
+
   .tag {
     display: inline-block;
     padding: 0 0.4em;
