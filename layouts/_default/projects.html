@@ -3,7 +3,7 @@
 <ul class="home-posts">
   {{ range .Site.Data.projects.projects }}
   <li>
-    <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
+    {{ partial "anchor.html" (dict "href" .url "text" .name) }}
     {{ with .github }}<span class="tag tag--stars" data-repo="{{ . }}" hidden>★ <span></span> GitHub stars</span>{{ end }}
     {{ range .badges }}
     <span class="tag">{{ . }}</span>

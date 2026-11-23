@@ -1,0 +1,14 @@
+{{- $href := .href -}}
+{{- $title := .title -}}
+{{- $external := false -}}
+{{- $parsed := urls.Parse $href -}}
+{{- if or (eq $parsed.Scheme "http") (eq $parsed.Scheme "https") (and (not $parsed.Scheme) $parsed.Host) -}}
+  {{- $linkHost := strings.TrimPrefix "www." $parsed.Hostname -}}
+  {{- $baseHost := strings.TrimPrefix "www." (urls.Parse site.BaseURL).Hostname -}}
+  {{- $homeHost := strings.TrimPrefix "www." (urls.Parse site.Home.Permalink).Hostname -}}
+  {{- $external = true -}}
+  {{- if or (eq $linkHost $baseHost) (eq $linkHost $homeHost) (eq $linkHost "robinroy.xyz") -}}
+    {{- $external = false -}}
+  {{- end -}}
+{{- end -}}
+<a href="{{ $href | safeURL }}"{{ with $title }} title="{{ . }}"{{ end }}{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .text }}</a>

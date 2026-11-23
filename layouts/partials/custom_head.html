@@ -42,6 +42,18 @@
     color: var(--heading-color);
   }
 
+  /* Black line art on a transparent ground. Invert in dark mode so the
+     lines stay visible on the dark background. */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) img[src="/images/cat.webp"] {
+      filter: invert(1);
+    }
+  }
+
+  :root[data-theme="dark"] img[src="/images/cat.webp"] {
+    filter: invert(1);
+  }
+
   ul.home-posts {
     list-style-type: none;
     padding: unset;

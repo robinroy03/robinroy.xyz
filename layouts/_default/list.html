@@ -16,7 +16,7 @@
           </time>
         </i>
       </span>
-      <a href="{{ .Permalink }}" target="_blank" rel="noopener noreferrer">{{ .Title }}</a>
+      {{ partial "anchor.html" (dict "href" .Permalink "text" .Title) }}
     </li>
     {{ else }}
     <li>

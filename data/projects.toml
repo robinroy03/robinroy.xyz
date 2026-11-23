@@ -13,7 +13,13 @@ url = "https://chromewebstore.google.com/detail/pronouncey-real-world-eng/kgjbng
 badges = ["700+ users", "Featured Chrome extension"]
 
 [[projects]]
-name = "appblock"
+name = "moly"
 description = "Android app blocker with \"allow X minutes per rolling Y minutes\" limits."
-url = "https://github.com/rubberpencils/appblock"
-github = "rubberpencils/appblock"
+url = "https://github.com/rubberpencils/moly"
+github = "rubberpencils/moly"
+
+[[projects]]
+name = "scene-finder"
+description = "CLI for agents to find movie clips from dialogue."
+url = "https://github.com/robinroy03/scene-finder"
+github = "robinroy03/scene-finder"

@@ -2,5 +2,5 @@
 {{- $email := strings.TrimPrefix "mailto:" .Destination -}}
 <span class="email-menu"><button type="button" class="email-menu__trigger">{{ .Text }}</button><span class="email-menu__list"><button type="button" class="email-menu__copy" data-email="{{ $email }}">Copy {{ $email }}</button><a href="{{ .Destination | safeURL }}">Open default client</a></span></span>
 {{- else -}}
-<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Text }}</a>
+{{- partial "anchor.html" (dict "href" .Destination "text" .Text "title" .Title) -}}
 {{- end -}}
