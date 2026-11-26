@@ -23,3 +23,10 @@ name = "scene-finder"
 description = "CLI for agents to find movie clips from dialogue."
 url = "https://github.com/robinroy03/scene-finder"
 github = "robinroy03/scene-finder"
+
+[[projects]]
+name = "RoadmapGPT"
+description = "i struggled with not knowing pre-requisites when learning something new. made this to help with that."
+url = "https://github.com/robinroy03/RoadmapGPT"
+github = "robinroy03/RoadmapGPT"
+badges = ["Archived"]
