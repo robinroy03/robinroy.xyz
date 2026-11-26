@@ -26,7 +26,7 @@ github = "robinroy03/scene-finder"
 
 [[projects]]
 name = "RoadmapGPT"
-description = "i struggled with not knowing pre-requisites when learning something new. made this to help with that."
+description = "I struggled with not knowing prerequisites when learning something new. Made this to help with that."
 url = "https://github.com/robinroy03/RoadmapGPT"
 github = "robinroy03/RoadmapGPT"
 badges = ["Archived"]
