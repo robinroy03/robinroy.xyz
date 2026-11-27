@@ -16,7 +16,7 @@
           </time>
         </i>
       </span>
-      {{ partial "anchor.html" (dict "href" .Permalink "text" .Title) }}
+      {{ partial "anchor.html" (dict "href" (.Params.externalUrl | default .Permalink) "text" .Title) }}
     </li>
     {{ else }}
     <li>
